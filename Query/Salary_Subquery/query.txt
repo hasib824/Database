@@ -1,0 +1,59 @@
+
+create table emp(
+id int, 
+name varchar(20),
+designation varchar(25),
+salary int,
+mgr int ,
+deptno int,
+primary key(id)
+);
+
+load data local infile 'I:/github/Database/Query/Salary_Subquery/data.txt' into table emp;
+
+
+select id , name from emp 
+where salary  = ( select max(salary) from emp where designation = "manager" );
+
+update emp set salary = 370000 where id = 1;
+
+select designation , max(salary) from emp
+group by designation;
+
+select max(select designation,count(designation) from emp 
+group by designation) from emp; 
+
+select designation,max( select count(designation) from emp group by designation) from emp 
+group by designation; 
+
+select designation,count(*) from emp
+group by designation 
+having count(*) = (select max(count(designation)) from emp
+group by designation);
+
+
+
+**show the designation which has max emplyoee
+
+select designation,count(designation) from emp 
+group by designation
+having count(designation) = (
+select max(counted) from
+(
+select count(*) as counted 
+from emp
+group by designation
+) as asd);
+
+
+**** Show second highest salary
+
+select salary from emp
+where salary<(select max(salary) from emp) 
+order by salary desc limit 1;
+
+update emp set salary = 9000 where id = 1;
+
+insert into emp (id,name,designation,salary,mgr,deptno)
+values(6,"Rumon","officer",15000,14,74); 
+

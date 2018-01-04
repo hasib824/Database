@@ -1,0 +1,5 @@
+1	aaa	salesman	7000	2	10
+2	hasib	manager	17000	3	10
+3	aaa	president	4000	2	10
+4	aaa	clerk	5000	5	10
+5	shakhawat	manager	20000	3	10

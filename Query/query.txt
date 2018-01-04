@@ -78,4 +78,27 @@ select * from student
 right join country on student.student_id= country.student_id;
 
 
+select * from student;
+select * from dept;
+select * from course;
+select * from courses_taken;
+select * from country;
+
+insert into dept( dept_id, student_id, dept_name)
+values(4,15,"bba");
+
+alter table country change column name st_name varchar(25);
+
+select student.name from student
+union 
+select st_name from country;
+
+select name from student
+where roll>(select avg(roll) from student);
+
+select name from student
+having count(roll) > 10;
+
+
+
 
